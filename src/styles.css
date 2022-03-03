@@ -4,7 +4,7 @@
 .container {
   margin: auto;
   width: 300px;
-  height: 565px;
+  height: 577px;
   align-items: center;
   padding: 1px;
   background: #ffffff;
@@ -20,7 +20,7 @@
   width: 285px;
   background: #eceff1;
   left: 8px;
-  top: 10px;
+  top: 15px;
   border-radius: 8px;
   position: absolute;
 }
@@ -53,12 +53,12 @@
   width: 295px;
   height: 400px;
   top: 115px;
-  left: 3px;
+  left: 2px;
 }
 
 .number {
   position: absolute;
-  width: 220px;
+  width: 223px;
   height: 220px;
   top: 75px;
 }
@@ -67,13 +67,13 @@
   position: absolute;
   width: 70px;
   height: 180px;
-  left: 217px;
+  left: 220px;
   top: 75px;
 }
 
 .button,
 .buttonNum {
-  margin: 5px;
+  margin: 8px;
   display: inline-block;
   font-size: 28px;
   text-align: center;
@@ -82,8 +82,8 @@
   border: none;
   border-radius: 10px;
   box-shadow: 0 5px #252525;
-  width: 62px;
-  height: 62px;
+  width: 58px;
+  height: 58px;
 }
 
 .buttonNum:active {
@@ -114,9 +114,9 @@
 }
 
 .getResult {
-  margin-top: 8px;
+  margin-top: 10px;
 }
 
-.sep {
-  width: 135px;
+.n0 {
+  width: 133px;
 }
