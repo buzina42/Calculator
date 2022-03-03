@@ -6,12 +6,12 @@ import { number, mathSymbol } from "./symbolLibrary";
 function NewApp() {
   const [firstNumber, setFirstNumber] = useState("");
   const [secondNumber, setSecondNumber] = useState("");
-  const [mathOperator, setOperator] = useState("");
+  const [mathOperator, setMathOperator] = useState("");
 
   const clearBtn = () => {
     setFirstNumber("");
     setSecondNumber("");
-    setOperator("");
+    setMathOperator("");
   };
 
   const numberBtn = (props) => {
@@ -38,11 +38,11 @@ function NewApp() {
 
     if (firstNumber && secondNumber && mathOperator !== "") {
       getResult();
-      setOperator(props);
+      setMathOperator(props);
       return;
     }
     if (secondEmptyAndfirstFull || firstEmptyAndSecondFull) {
-      setOperator(props);
+      setMathOperator(props);
     }
     if (firstNumber === "") {
       return;
@@ -80,7 +80,7 @@ function NewApp() {
       setFirstNumber(result);
       setSecondNumber("");
     }
-    setOperator("");
+    setMathOperator("");
   };
 
   return (
@@ -101,7 +101,7 @@ function NewApp() {
         <div className="number">
           {number.map((item) => (
             <NewButton
-              className={"buttonNum"}
+              className={`buttonNum n${item}`}
               i={item}
               tapNumber={numberBtn}
               key={item}
@@ -136,3 +136,4 @@ function NewApp() {
 }
 
 export default NewApp;
+
