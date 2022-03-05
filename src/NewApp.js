@@ -58,7 +58,7 @@ function NewApp() {
       case "/":
         one = two / one;
         break;
-      case "*":
+      case "x":
         one = one * two;
         break;
       case "+":
