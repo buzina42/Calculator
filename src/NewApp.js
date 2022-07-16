@@ -2,11 +2,18 @@ import "./styles.css";
 import React, { useState } from "react";
 import NewButton from "./NewButton";
 import { number, mathSymbol } from "./symbolLibrary";
+import { ThemeProvider } from "styled-components";
+import { darkTheme, lightTheme, GlobalStyles } from "./theme";
 
 function NewApp() {
   const [firstNumber, setFirstNumber] = useState("");
   const [secondNumber, setSecondNumber] = useState("");
   const [mathOperator, setMathOperator] = useState("");
+  const [theme, setTheme] = useState("light");
+
+  const switchTheme = () => {
+    theme === "light" ? setTheme("dark") : setTheme("light");
+  };
 
   const clearBtn = () => {
     setFirstNumber("");
@@ -84,56 +91,65 @@ function NewApp() {
   };
 
   return (
-    <div className="container">
-      <div className="result">
-        <p className="out">{secondNumber}</p>
-        <p className="opr">{mathOperator}</p>
-        <p className="num">{firstNumber || "0"}</p>
-      </div>
+    <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
+      <GlobalStyles />
+      <div>
+        <div className="Switch">
+          <button className="button Switch" onClick={switchTheme}>
+            Switch Theme
+          </button>
+        </div>
+        <div className="container">
+          <div className="result">
+            <p className="out">{secondNumber}</p>
+            <p className="opr">{mathOperator}</p>
+            <p className="num">{firstNumber || "0"}</p>
+          </div>
 
-      <div className="buttons">
-        <NewButton
-          className={"button BtnC"}
-          i={"C"}
-          tapNumber={clearBtn}
-          key={"C"}
-        />
-        <div className="number">
-          {number.map((item) => (
+          <div className="buttons">
             <NewButton
-              className={`buttonNum n${item}`}
-              i={item}
-              tapNumber={numberBtn}
-              key={item}
+              className={"button BtnC"}
+              i={"C"}
+              tapNumber={clearBtn}
+              key={"C"}
             />
-          ))}
-          <NewButton
-            className={"buttonNum sep"}
-            i={"."}
-            tapNumber={numberBtn}
-            key={"."}
-          />
-          <NewButton
-            className={"button getResult"}
-            i={"="}
-            tapNumber={getResult}
-            key={"="}
-          />
-        </div>
-        <div className="mathSym">
-          {mathSymbol.map((item) => (
-            <NewButton
-              className={"button"}
-              i={item}
-              tapNumber={mathBtn}
-              key={item}
-            />
-          ))}
+            <div className="number">
+              {number.map((item) => (
+                <NewButton
+                  className={`buttonNum n${item}`}
+                  i={item}
+                  tapNumber={numberBtn}
+                  key={item}
+                />
+              ))}
+              <NewButton
+                className={"buttonNum sep"}
+                i={"."}
+                tapNumber={numberBtn}
+                key={"."}
+              />
+              <NewButton
+                className={"button getResult"}
+                i={"="}
+                tapNumber={getResult}
+                key={"="}
+              />
+            </div>
+            <div className="mathSym">
+              {mathSymbol.map((item) => (
+                <NewButton
+                  className={"button"}
+                  i={item}
+                  tapNumber={mathBtn}
+                  key={item}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </ThemeProvider>
   );
 }
 
 export default NewApp;
-
